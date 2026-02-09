@@ -1,0 +1,177 @@
+.base-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-surface);
+  border: 2px solid var(--node-color, var(--color-primary));
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  min-width: 80px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  touch-action: none;
+}
+
+.node-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.node-delete-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-error);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  /* Larger touch target */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.node-delete-btn:active {
+  transform: scale(0.9);
+  background: var(--color-primary-dark);
+}
+
+/* Handle wrapper for arrow + handle positioning */
+.node-handle-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.node-handle-left {
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.node-handle-right {
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Arrow indicators */
+.node-handle-arrow {
+  font-size: 0.75rem;
+  color: var(--node-color, var(--color-primary));
+  line-height: 1;
+}
+
+.node-handle-left .node-handle-arrow {
+  order: 1;
+}
+
+/* Multiple output handles on right side */
+.node-handles-right {
+  position: absolute;
+  right: -24px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.node-handles-right .node-handle-wrapper {
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: none;
+}
+
+.base-node.node-status-good {
+  border-color: var(--color-pressure-good);
+}
+
+.base-node.node-status-ok {
+  border-color: var(--color-pressure-ok);
+}
+
+.base-node.node-status-low {
+  border-color: var(--color-pressure-low);
+  background: var(--color-error-light);
+}
+
+.node-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.node-label {
+  font-weight: 600;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.node-elevation {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+}
+
+.node-pressure {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--node-color, var(--color-primary));
+}
+
+.node-status-good .node-pressure {
+  color: var(--color-pressure-good);
+}
+
+.node-status-ok .node-pressure {
+  color: var(--color-pressure-ok);
+}
+
+.node-status-low .node-pressure {
+  color: var(--color-pressure-low);
+}
+
+/* Override React Flow handle styles */
+.base-node .react-flow__handle.node-handle {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  transform: none;
+  width: 14px;
+  height: 14px;
+  background: var(--node-color, var(--color-primary));
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+}
+
+/* Smaller delete button on desktop */
+@media (min-width: 768px) {
+  .node-delete-btn {
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    font-size: 0.75rem;
+  }
+}
