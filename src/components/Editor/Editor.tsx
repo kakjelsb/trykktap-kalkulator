@@ -65,6 +65,7 @@ const validConnections: Record<EquipmentCategory, EquipmentCategory[]> = {
 function toFlowNode(
   layoutNode: { id: string; equipmentId: string; position: { x: number; y: number }; elevation: number },
   onDelete: (nodeId: string) => void,
+  onElevationChange: (nodeId: string, elevation: number) => void,
   calculation?: NodeCalculation
 ): Node {
   const equipment = getEquipmentById(layoutNode.equipmentId)
@@ -79,6 +80,7 @@ function toFlowNode(
     status: calculation?.status,
     equipmentId: equipment.id,
     onDelete: () => onDelete(layoutNode.id),
+    onElevationChange: (elevation: number) => onElevationChange(layoutNode.id, elevation),
   }
 
   // Add type-specific data
@@ -143,14 +145,19 @@ export function Editor() {
     return calculateLayout(layout)
   }, [layout])
 
+  // Handle elevation change from node
+  const handleElevationChange = useCallback((nodeId: string, elevation: number) => {
+    updateNode(nodeId, { elevation })
+  }, [updateNode])
+
   // Sync nodes/edges when layout or calculations change
   useEffect(() => {
     setNodes(layout.nodes.map(node => {
       const calculation = calculationResult.nodes.get(node.id)
-      return toFlowNode(node, removeNode, calculation)
+      return toFlowNode(node, removeNode, handleElevationChange, calculation)
     }))
     setEdges(layout.edges.map(toFlowEdge))
-  }, [layout.nodes, layout.edges, calculationResult, setNodes, setEdges, removeNode])
+  }, [layout.nodes, layout.edges, calculationResult, setNodes, setEdges, removeNode, handleElevationChange])
 
   // Validate connections based on equipment type rules
   const isValidConnection = useCallback<IsValidConnection>(

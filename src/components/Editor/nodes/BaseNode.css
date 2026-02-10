@@ -130,6 +130,54 @@
   color: var(--color-text-muted);
 }
 
+/* Editable elevation button */
+.node-elevation-btn {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-bottom: 1px dashed var(--color-text-muted);
+  padding: 0 2px;
+  margin: 0;
+  min-width: auto;
+  min-height: auto;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.node-elevation-btn:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+/* Elevation edit mode */
+.node-elevation-edit {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.node-elevation-input {
+  width: 50px;
+  font-size: 0.625rem;
+  padding: 2px 4px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  text-align: right;
+  min-height: auto;
+}
+
+.node-elevation-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+.node-elevation-unit {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+}
+
 .node-pressure {
   font-size: 0.875rem;
   font-weight: 700;
