@@ -14,7 +14,39 @@ import {
   createEmptyLayout,
   createNode,
   createEdge,
+  getEquipmentById,
 } from '../models'
+
+// Default positions for initial nodes
+const DEFAULT_SOURCE_POSITION = { x: 100, y: 150 }
+const DEFAULT_TERMINAL_POSITION = { x: 500, y: 150 }
+const DEFAULT_SOURCE_ELEVATION = 0
+const DEFAULT_TERMINAL_ELEVATION = 100
+
+/**
+ * Create a layout with default source and terminal nodes
+ */
+function createInitialLayout(): Layout {
+  const layout = createEmptyLayout()
+  const now = Date.now()
+
+  // Add source node
+  const sourceEquipment = getEquipmentById('source')
+  if (sourceEquipment) {
+    const sourceNode = createNode(sourceEquipment, DEFAULT_SOURCE_POSITION, DEFAULT_SOURCE_ELEVATION)
+    layout.nodes.push(sourceNode)
+  }
+
+  // Add terminal node (water cannon)
+  const terminalEquipment = getEquipmentById('terminal-cannon')
+  if (terminalEquipment) {
+    const terminalNode = createNode(terminalEquipment, DEFAULT_TERMINAL_POSITION, DEFAULT_TERMINAL_ELEVATION)
+    layout.nodes.push(terminalNode)
+  }
+
+  layout.updatedAt = now
+  return layout
+}
 
 interface LayoutState {
   // Current layout
@@ -42,7 +74,7 @@ interface LayoutState {
 }
 
 export const useLayoutStore = create<LayoutState>((set, get) => ({
-  layout: createEmptyLayout(),
+  layout: createInitialLayout(),
   selectedNodeId: null,
 
   addNode: (equipment, position, elevation = 0) => {
@@ -125,7 +157,7 @@ export const useLayoutStore = create<LayoutState>((set, get) => ({
 
   clearLayout: () => {
     set({
-      layout: createEmptyLayout(),
+      layout: createInitialLayout(),
       selectedNodeId: null,
     })
   },

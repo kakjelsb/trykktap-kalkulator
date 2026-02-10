@@ -11,8 +11,8 @@
 }
 
 .editor .react-flow__controls {
-  bottom: auto;
-  top: var(--space-sm);
+  bottom: var(--space-sm);
+  top: auto;
   right: var(--space-sm);
   left: auto;
   box-shadow: var(--shadow-md);
@@ -65,12 +65,13 @@
   display: none;
 }
 
-/* Show minimap on larger screens */
+/* Show minimap on larger screens - positioned bottom left */
 @media (min-width: 768px) {
   .editor-minimap {
     display: block;
     bottom: var(--space-sm) !important;
-    right: var(--space-sm) !important;
+    left: var(--space-sm) !important;
+    right: auto !important;
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);

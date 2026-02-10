@@ -7,6 +7,7 @@ export const nb = {
   app: {
     title: 'Trykktap Kalkulator',
     description: 'Dra utstyr fra paletten for å bygge oppsettet',
+    rotateDevice: 'Vennligst roter enheten til liggende visning',
   },
 
   toolbar: {

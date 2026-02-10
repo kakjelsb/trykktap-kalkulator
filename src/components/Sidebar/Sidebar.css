@@ -1,0 +1,132 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 56px;
+  height: 100%;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Logo section */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-icon {
+  font-size: 1.75rem;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0 var(--space-sm);
+}
+
+/* Equipment groups container */
+.sidebar-groups {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-sm) 0;
+}
+
+/* Individual group */
+.sidebar-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-group-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-xs);
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 2px;
+  min-height: 48px;
+  transition: background 0.15s ease;
+}
+
+.sidebar-group-header:hover {
+  background: var(--color-bg);
+}
+
+.sidebar-group.expanded .sidebar-group-header {
+  background: var(--color-primary-light);
+}
+
+.sidebar-group-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.sidebar-group-label {
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 48px;
+}
+
+.sidebar-group-arrow {
+  font-size: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+/* Expanded items */
+.sidebar-group-items {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-xs);
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 2px;
+  min-height: 44px;
+  transition: background 0.15s ease;
+}
+
+.sidebar-item:hover {
+  background: var(--color-primary-light);
+}
+
+.sidebar-item:active {
+  transform: scale(0.95);
+}
+
+.sidebar-item-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.sidebar-item-label {
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 48px;
+  text-align: center;
+}
