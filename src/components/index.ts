@@ -1,5 +1,6 @@
 export { Editor } from './Editor'
 export { Palette } from './Palette'
 export { Warnings } from './Warnings'
-export { Sidebar } from './Sidebar'
+export { EquipmentPanel } from './EquipmentPanel'
+export { ActionPanel } from './ActionPanel'
 export { PortraitOverlay } from './PortraitOverlay'

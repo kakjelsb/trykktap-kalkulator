@@ -5,8 +5,15 @@
   width: 100%;
 }
 
-/* Sidebar - fixed on left */
-.app-sidebar {
+/* Equipment panel - fixed on left */
+.app-equipment-panel {
+  flex-shrink: 0;
+  height: 100%;
+  z-index: var(--z-palette);
+}
+
+/* Action panel - fixed on right */
+.app-action-panel {
   flex-shrink: 0;
   height: 100%;
   z-index: var(--z-palette);

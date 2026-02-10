@@ -1,5 +1,5 @@
 /**
- * Sidebar Component
+ * EquipmentPanel Component
  *
  * Left-aligned vertical menu with logo and collapsible equipment groups.
  * Optimized for landscape mode.
@@ -10,7 +10,6 @@ import { t } from '../../i18n'
 import { equipmentCatalog, type Equipment, type EquipmentCategory } from '../../models'
 import { useLayoutStore } from '../../store'
 import { getEquipmentIcon } from '../../constants'
-import './Sidebar.css'
 
 // Layout constants
 const DEFAULT_SOURCE_POSITION = { x: 100, y: 150 }
@@ -58,28 +57,28 @@ function CategoryGroup({ category, items, onAdd }: CategoryGroupProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <div className={`sidebar-group ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`panel__group ${isExpanded ? 'expanded' : ''}`}>
       <button
-        className="sidebar-group-header"
+        className="panel__group-header"
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
       >
-        <span className="sidebar-group-icon">{categoryIcons[category]}</span>
-        <span className="sidebar-group-label">{categoryLabels[category]}</span>
-        <span className="sidebar-group-arrow">{isExpanded ? '▼' : '▶'}</span>
+        <span className="panel__group-icon">{categoryIcons[category]}</span>
+        <span className="panel__group-label">{categoryLabels[category]}</span>
+        <span className="panel__group-arrow">{isExpanded ? '▼' : '▶'}</span>
       </button>
 
       {isExpanded && (
-        <div className="sidebar-group-items">
+        <div className="panel__group-items">
           {items.map((equipment) => (
             <button
               key={equipment.id}
-              className="sidebar-item"
+              className="panel__item"
               onClick={() => onAdd(equipment)}
               title={getEquipmentLabel(equipment)}
             >
-              <span className="sidebar-item-icon">{getEquipmentIcon(equipment.id)}</span>
-              <span className="sidebar-item-label">{getEquipmentLabel(equipment)}</span>
+              <span className="panel__item-icon">{getEquipmentIcon(equipment.id)}</span>
+              <span className="panel__item-label">{getEquipmentLabel(equipment)}</span>
             </button>
           ))}
         </div>
@@ -88,7 +87,7 @@ function CategoryGroup({ category, items, onAdd }: CategoryGroupProps) {
   )
 }
 
-export function Sidebar() {
+export function EquipmentPanel() {
   const addNode = useLayoutStore((state) => state.addNode)
 
   const handleAddEquipment = (equipment: Equipment) => {
@@ -107,17 +106,17 @@ export function Sidebar() {
   }
 
   return (
-    <div className="sidebar">
+    <div className="panel panel--left">
       {/* Logo */}
-      <div className="sidebar-logo">
-        <span className="sidebar-logo-icon">🚒</span>
+      <div className="panel__header">
+        <span className="panel__header-icon">🚒</span>
       </div>
 
       {/* Divider */}
-      <div className="sidebar-divider" />
+      <div className="panel__divider" />
 
       {/* Equipment groups */}
-      <div className="sidebar-groups">
+      <div className="panel__content">
         {categories.map((category) => {
           const items = equipmentByCategory[category]
           if (items.length === 0) return null
