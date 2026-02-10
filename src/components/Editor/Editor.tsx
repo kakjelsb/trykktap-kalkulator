@@ -10,7 +10,6 @@ import {
   ReactFlow,
   Background,
   Controls,
-  MiniMap,
   useNodesState,
   useEdgesState,
   addEdge,
@@ -258,12 +257,6 @@ export function Editor() {
           showFitView={true}
           showZoom={true}
           position="top-right"
-        />
-        <MiniMap
-          nodeStrokeWidth={3}
-          pannable
-          zoomable
-          className="editor-minimap"
         />
       </ReactFlow>
     </div>

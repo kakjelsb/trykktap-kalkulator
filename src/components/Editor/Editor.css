@@ -61,33 +61,6 @@
   stroke-width: 20;
 }
 
-.editor-minimap {
-  display: none;
-}
-
-/* Show minimap on larger screens - positioned bottom left */
-@media (min-width: 768px) {
-  .editor-minimap {
-    display: block;
-    bottom: var(--space-sm) !important;
-    left: var(--space-sm) !important;
-    right: auto !important;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Smaller handles on desktop where mouse precision is better */
-  .editor .react-flow__handle {
-    width: 14px;
-    height: 14px;
-  }
-
-  .editor .react-flow__edge-path {
-    stroke-width: 3;
-  }
-}
-
 /* Node additional styles */
 .node-diameter {
   font-size: 0.625rem;
