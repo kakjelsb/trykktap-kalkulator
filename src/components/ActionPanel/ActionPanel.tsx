@@ -27,10 +27,10 @@ export function ActionPanel() {
         <button
           className="panel__item"
           onClick={clearLayout}
-          title={t.toolbar.clear}
+          title={t.toolbar.reset}
         >
           <span className="panel__item-icon">🔄</span>
-          <span className="panel__item-label">{t.toolbar.clear}</span>
+          <span className="panel__item-label">{t.toolbar.reset}</span>
         </button>
       </div>
     </div>

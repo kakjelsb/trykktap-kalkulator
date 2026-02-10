@@ -13,7 +13,7 @@ export const nb = {
   toolbar: {
     save: 'Lagre',
     share: 'Del',
-    clear: 'Tøm',
+    reset: 'Nullstill',
     undo: 'Angre',
     redo: 'Gjør om',
   },
