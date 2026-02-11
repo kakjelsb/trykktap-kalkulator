@@ -180,6 +180,7 @@ input, select {
 /* Scrollable content area */
 .panel__content {
   flex: 1;
+  min-height: 0; /* Required for overflow scroll in flex container */
   overflow-y: auto;
   overflow-x: hidden;
   padding: var(--space-sm) 0;
